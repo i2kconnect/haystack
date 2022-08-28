@@ -226,7 +226,9 @@ class Document:
         )
 
     def __repr__(self):
-        return f"<Document: {str(self.to_dict())}>"
+        self_dict = self.to_dict()
+        del self_dict['embedding'] # too much data
+        return f"<Document: {str(self_dict)}>"
 
     def __str__(self):
         # In some cases, self.content is None (therefore not subscriptable)
